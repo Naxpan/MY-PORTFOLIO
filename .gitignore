@@ -1,0 +1,45 @@
+# Node modules & build output
+node_modules/
+dist/
+dist-ssr/
+build/
+.temp/
+.cache/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# VSCode settings (optional, giữ lại extensions.json nếu muốn)
+.vscode/*
+!.vscode/extensions.json
