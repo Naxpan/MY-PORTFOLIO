@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "../slides/Home";
 import About from "../slides/About";
 import Project from "../slides/Project";

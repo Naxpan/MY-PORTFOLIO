@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { HeroParallax } from "../../../component/HeroParallax/HeroParallax";
 import { DragCloseDrawer } from "../../../component/DragCloseDrawer/DragCloseDrawer";
 import projectsData from "../../../assets/data/projects.json";
@@ -12,10 +12,10 @@ interface Tech {
 }
 
 interface Project {
-  title: string;
-  description: string;
+  title: { vi: string; en: string };
+  description: { vi: string; en: string };
   image: string;
-  content: string;
+  content: { vi: string; en: string };
   tech: Tech[];
 }
 
@@ -29,16 +29,16 @@ export function HeroParallaxDemo() {
     setIsDrawerOpen(true);
   };
 
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
   const products = projectsData.map((project) => ({
-    title: project.title,
-    description: project.description,
+    title: project.title[lang as keyof typeof project.title],
+    description: project.description[lang as keyof typeof project.description],
     thumbnail: project.image,
     link: "#",
     fullData: project,
   }));
-
-  const { i18n } = useTranslation();
-  const lang = i18n.language;
 
   return (
     <>
@@ -49,10 +49,18 @@ export function HeroParallaxDemo() {
           <div style={{ height: "500px", position: "relative" }}>
             <div className="absolute w-[90%] sm:w-2/3 md:w-1/2 left-2 sm:left-8 md:left-20 top-4 sm:top-10 md:ml-2 sm:ml-4 mt-4 sm:mt-8 md:mt-16 z-10">
               <h1 className="text-white text-3xl font-bold mb-12">
-                {selectedProject.title[lang]}
+                {
+                  selectedProject.title[
+                    lang as keyof typeof selectedProject.title
+                  ]
+                }
               </h1>
               <p className="text-white text-xl mb-12">
-                {selectedProject.content[lang]}
+                {
+                  selectedProject.content[
+                    lang as keyof typeof selectedProject.content
+                  ]
+                }
               </p>
               <span className="text-white text-base font-normal">
                 {t("techStackTitle")}
@@ -98,7 +106,11 @@ export function HeroParallaxDemo() {
               <Card className="hidden md:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title[lang]}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />
@@ -106,7 +118,11 @@ export function HeroParallaxDemo() {
               <Card className="hidden sm:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title[lang]}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />
@@ -114,7 +130,11 @@ export function HeroParallaxDemo() {
               <Card className="hidden md:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title[lang]}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />

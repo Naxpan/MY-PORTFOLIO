@@ -45,7 +45,7 @@ interface ScrollVelocityProps {
 }
 
 function useElementWidth<T extends HTMLElement>(
-  ref: React.RefObject<T | null>
+  ref: React.RefObject<T | null>,
 ): number {
   const [width, setWidth] = useState(0);
 
@@ -105,7 +105,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
       smoothVelocity,
       velocityMapping?.input || [0, 1000],
       velocityMapping?.output || [0, 5],
-      { clamp: false }
+      { clamp: false },
     );
 
     const copyRef = useRef<HTMLSpanElement>(null);
@@ -123,7 +123,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
     });
 
     const directionFactor = useRef<number>(1);
-    useAnimationFrame((t, delta) => {
+    useAnimationFrame((_, delta) => {
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
       if (velocityFactor.get() < 0) {
@@ -145,7 +145,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
           ref={i === 0 ? copyRef : null}
         >
           {children}
-        </span>
+        </span>,
       );
     }
 

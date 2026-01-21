@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ThreeDCardDemo } from "./project/3dcard";
 import AnimatedContent from "../../component/animationContent/animated";
 import projectsData from "../../assets/data/projects.json";
@@ -14,10 +14,10 @@ interface Tech {
 }
 
 interface Project {
-  title: string;
-  description: string;
+  title: { vi: string; en: string };
+  description: { vi: string; en: string };
   image: string;
-  content: string;
+  content: { vi: string; en: string };
   tech: Tech[];
 }
 
@@ -56,10 +56,12 @@ const Project = () => {
               delay={0.1 + index * 0.1}
             >
               <ThreeDCardDemo
-                title={project.title}
-                description={project.description[lang]}
+                title={project.title[lang as keyof typeof project.title]}
+                description={
+                  project.description[lang as keyof typeof project.description]
+                }
                 image={project.image}
-                onShowDetail={() => handleShowDetail(project as Project)}
+                onShowDetail={() => handleShowDetail(project)}
               />
             </AnimatedContent>
           ))}
@@ -89,10 +91,18 @@ const Project = () => {
           <div style={{ height: "450px", position: "relative" }}>
             <div className="absolute w-[90%] sm:w-2/3 md:w-1/2 left-2 sm:left-8 md:left-20 top-4 sm:top-10 sm:ml-4 md:ml-8 mt-4 sm:mt-8 md:mt-16 z-10">
               <h1 className="text-white text-3xl font-bold mb-12">
-                {selectedProject.title[lang]}
+                {
+                  selectedProject.title[
+                    lang as keyof typeof selectedProject.title
+                  ]
+                }
               </h1>
               <p className="text-white text-xl mb-12">
-                {selectedProject.content[lang]}
+                {
+                  selectedProject.content[
+                    lang as keyof typeof selectedProject.content
+                  ]
+                }
               </p>
               <span className="text-white text-base font-normal">
                 {t("tech")}
@@ -125,7 +135,11 @@ const Project = () => {
               <Card className="hidden md:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />
@@ -133,7 +147,11 @@ const Project = () => {
               <Card className="hidden sm:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />
@@ -141,7 +159,11 @@ const Project = () => {
               <Card className="hidden md:block">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={
+                    selectedProject.title[
+                      lang as keyof typeof selectedProject.title
+                    ]
+                  }
                   className="w-full h-full rounded-xl"
                   style={{ maxHeight: "100%" }}
                 />

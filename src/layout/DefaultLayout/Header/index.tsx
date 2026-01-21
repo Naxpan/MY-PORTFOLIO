@@ -1,7 +1,7 @@
 import PillNav from "./navbar";
 import { Link } from "react-router-dom";
-import { MdLanguage, MdKeyboardArrowDown } from "react-icons/md";
-import React, { useState, useEffect } from "react";
+import { MdLanguage } from "react-icons/md";
+import { useState, useEffect } from "react";
 import i18n from "i18next";
 
 const sections = ["#home", "#about", "#projects", "#contact"];
