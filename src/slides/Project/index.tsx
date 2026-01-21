@@ -87,7 +87,7 @@ const Project = () => {
       <DragCloseDrawer open={open} setOpen={setOpen}>
         {selectedProject && (
           <div style={{ height: "450px", position: "relative" }}>
-            <div className="absolute w-[90%] sm:w-2/3 md:w-1/2 left-2 sm:left-8 md:left-20 top-4 sm:top-10 md:ml-2 sm:ml-4 md:ml-8 mt-4 sm:mt-8 md:mt-16 z-10">
+            <div className="absolute w-[90%] sm:w-2/3 md:w-1/2 left-2 sm:left-8 md:left-20 top-4 sm:top-10 sm:ml-4 md:ml-8 mt-4 sm:mt-8 md:mt-16 z-10">
               <h1 className="text-white text-3xl font-bold mb-12">
                 {selectedProject.title[lang]}
               </h1>

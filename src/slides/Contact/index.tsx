@@ -1,8 +1,23 @@
+import React, { useState } from "react";
 import AnimatedContent from "../../component/animationContent/animated";
 import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { t } = useTranslation();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSendMail = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent("Thông tin liên hệ từ Portfolio");
+    const body = encodeURIComponent(
+      `Tên: ${name}\nEmail: ${email}\nNội dung: ${message}`,
+    );
+    window.location.href = `mailto:phamngocman1203@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <AnimatedContent
       distance={100}
@@ -74,10 +89,10 @@ const Contact = () => {
                         Email
                       </p>
                       <a
-                        href="mailto:Phamngocman1203@gmail.com"
+                        href="mailto:phamngocman1203@gmail.com"
                         className="text-white text-sm font-medium hover:text-blue-400 transition"
                       >
-                        Phamngocman1203@gmail.com
+                        phamngocman1203@gmail.com
                       </a>
                     </div>
                   </div>
@@ -122,25 +137,12 @@ const Contact = () => {
               {/* Right Side - Form */}
               <div className="lg:col-span-3">
                 <div className="flex items-center gap-3 mb-8">
-                  <svg
-                    className="w-5 h-5 text-blue-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                    />
-                  </svg>
                   <h2 className="text-white text-2xl font-bold tracking-tight uppercase">
                     {t("info")}
                   </h2>
                 </div>
 
-                <form className="flex flex-col gap-6">
+                <form className="flex flex-col gap-6" onSubmit={handleSendMail}>
                   {/* Name Input */}
                   <div>
                     <div className="relative">
@@ -162,6 +164,8 @@ const Contact = () => {
                       <input
                         type="text"
                         placeholder={t("name")}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full pl-12 pr-4 py-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white placeholder-gray-600 transition-all duration-300"
                       />
                     </div>
@@ -188,6 +192,8 @@ const Contact = () => {
                       <input
                         type="email"
                         placeholder={t("mail")}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full pl-12 pr-4 py-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white placeholder-gray-600 transition-all duration-300"
                       />
                     </div>
@@ -198,13 +204,16 @@ const Contact = () => {
                     <textarea
                       rows={6}
                       placeholder={t("mess")}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       className="w-full px-4 py-4 bg-gray-900/50 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition resize-none"
                     ></textarea>
                   </div>
 
                   {/* Submit Button */}
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSendMail}
                     className="w-full py-4 bg-blue-600 text-white font-bold uppercase tracking-wider rounded-lg hover:bg-blue-500 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] flex items-center justify-center gap-2"
                   >
                     {t("send")}
