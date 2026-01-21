@@ -1,5 +1,5 @@
 import ShinyText from "../../../component/texts/shiny/shinyText";
-import techStack from "../../../assets/data/techStack.json";
+import techStack from "../../../assets/data/techstack.json";
 import { useTranslation } from "react-i18next";
 
 const TechStack = () => {
