@@ -65,14 +65,7 @@ export function HeroParallaxDemo() {
               <span className="text-white text-base font-normal">
                 {t("techStackTitle")}
               </span>
-              <div
-                className="grid
-  grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(180px,1fr))]
-  gap-4
-  mt-6
-  mb-60
-  z-10"
-              >
+              <div className="grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4 mt-6 mb-60 z-10">
                 {selectedProject.tech.map((tech: Tech, idx: number) => (
                   <div
                     key={`${
