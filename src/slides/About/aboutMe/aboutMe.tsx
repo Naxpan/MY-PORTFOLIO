@@ -114,7 +114,7 @@ const AboutMe = () => {
               <div className="w-full flex justify-center lg:justify-start my-4 sm:my-6">
                 <Magnet padding={20}>
                   <a
-                    href=".public/CV/CV_PhamNgocMan_ThuctapKySuLapTrinhWeb.pdf"
+                    href="/CV/CV_PhamNgocMan_ThuctapKySuLapTrinhWeb.pdf"
                     className="mt-6 sm:mt-10 mb-6 sm:mb-8 px-3 py-3 border border-gray-300 text-gray-300 rounded-full text-base cursor-pointer"
                     download="CV_PhamNgocMan_ThuctapKySuLapTrinhWeb.pdf"
                   >
