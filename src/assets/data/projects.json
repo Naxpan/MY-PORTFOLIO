@@ -8,7 +8,7 @@
       "vi": "Giới thiệu band, album, tour diễn và liên hệ booking",
       "en": "Introduce band, album, tour and booking contact"
     },
-    "image": "/projectImages/band.png",
+    "image": "/src/assets/images/projectImages/band.png",
     "tech": [
       {
         "name": "HTML5",
@@ -37,7 +37,7 @@
       "vi": "Quản lý học viên, khóa học, giảng viên và lịch học",
       "en": "Manage students, courses, teachers and schedules"
     },
-    "image": "/projectImages/English.png",
+    "image": "/src/assets/images/projectImages/English.png",
     "tech": [
       {
         "name": "JavaScript",
@@ -70,7 +70,7 @@
       "vi": "Mô phỏng Shopee với sản phẩm, giỏ hàng và UI tương tác",
       "en": "Shopee simulation with products, cart, and interactive UI"
     },
-    "image": "/projectImages/shopee.png",
+    "image": "/src/assets/images/projectImages/shopee.png",
     "tech": [
       {
         "name": "React",
@@ -99,7 +99,7 @@
       "vi": "Quản lý hội viên, gói tập, thanh toán và lịch tập",
       "en": "Manage members, training packages, payments, and workout schedules"
     },
-    "image": "/projectImages/gym.png",
+    "image": "/src/assets/images/projectImages/gym.png",
     "tech": [
       {
         "name": "JavaScript",
@@ -136,7 +136,7 @@
       "vi": "Đồng bộ dữ liệu với hệ thống quản lý phòng Gym",
       "en": "Data synchronization with the gym management system"
     },
-    "image": "/projectImages/gymphone.png",
+    "image": "/src/assets/images/projectImages/gymphone.png",
     "tech": [
       {
         "name": "Flutter",
@@ -165,7 +165,7 @@
       "vi": "Quản lý vận chuyển và trạng thái giao hàng",
       "en": "Manage shipping, and delivery status."
     },
-    "image": "/projectImages/map.png",
+    "image": "/src/assets/images/projectImages/map.png",
     "tech": [
       {
         "name": "React",
