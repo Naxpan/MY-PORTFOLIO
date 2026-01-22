@@ -14,7 +14,7 @@ interface Tech {
 interface Project {
   title: { vi: string; en: string };
   description: { vi: string; en: string };
-  image: string;
+  image: Array<{ pic1: string; pic2: string; pic3: string }>;
   content: { vi: string; en: string };
   tech: Tech[];
 }
@@ -35,7 +35,7 @@ export function HeroParallaxDemo() {
   const products = projectsData.map((project) => ({
     title: project.title[lang as keyof typeof project.title],
     description: project.description[lang as keyof typeof project.description],
-    thumbnail: project.image,
+    thumbnail: project.image[0].pic1,
     link: "#",
     fullData: project,
   }));
@@ -105,7 +105,7 @@ export function HeroParallaxDemo() {
             <CardSwap cardDistance={30} verticalDistance={40}>
               <Card className="hidden md:block">
                 <img
-                  src={selectedProject.image}
+                  src={selectedProject.image[0].pic1}
                   alt={
                     selectedProject.title[
                       lang as keyof typeof selectedProject.title
@@ -117,7 +117,7 @@ export function HeroParallaxDemo() {
               </Card>
               <Card className="hidden sm:block">
                 <img
-                  src={selectedProject.image}
+                  src={selectedProject.image[0].pic2}
                   alt={
                     selectedProject.title[
                       lang as keyof typeof selectedProject.title
@@ -129,7 +129,7 @@ export function HeroParallaxDemo() {
               </Card>
               <Card className="hidden md:block">
                 <img
-                  src={selectedProject.image}
+                  src={selectedProject.image[0].pic3}
                   alt={
                     selectedProject.title[
                       lang as keyof typeof selectedProject.title
