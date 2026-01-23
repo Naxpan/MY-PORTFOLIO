@@ -106,7 +106,7 @@ const AboutMe = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="flex text-2xl font-bold text-blue-400">
-                    <CountUp from={0} to={2.84} duration={2} />+
+                    <CountUp from={0} to={2.87} duration={1} />+
                   </div>
                   <span className="text-base text-gray-300 mt-2">GPA</span>
                 </div>
