@@ -82,7 +82,7 @@ const AboutMe = () => {
               <div className="w-full grid grid-cols-2 sm:grid-cols-4 border-t border-b border-gray-700 py-10 gap-y-8">
                 <div className="flex flex-col items-center">
                   <div className="flex text-2xl font-bold text-blue-400">
-                    <CountUp from={0} to={1} duration={5} />+
+                    <CountUp from={0} to={5} duration={5} />+
                   </div>
                   <span className="text-base text-gray-300 mt-2">{t("y")}</span>
                 </div>
@@ -116,7 +116,7 @@ const AboutMe = () => {
                   <a
                     href="/CV/CV_PhamNgocMan_ThuctapKySuLapTrinhWeb.pdf"
                     className="mt-6 sm:mt-10 mb-6 sm:mb-8 px-3 py-3 border border-gray-300 text-gray-300 rounded-full text-base cursor-pointer"
-                    download="CV_PhamNgocMan_ThuctapKySuLapTrinhWeb.pdf"
+                    download="CV_PhamNgocMan.pdf"
                   >
                     {t("Cv")}
                   </a>
