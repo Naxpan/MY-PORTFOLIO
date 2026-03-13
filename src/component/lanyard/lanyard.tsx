@@ -43,18 +43,33 @@ export default function Lanyard({
   const [isMobile, setIsMobile] = useState<boolean>(
     () => typeof window !== "undefined" && window.innerWidth < 768,
   );
+  const [isDocumentVisible, setIsDocumentVisible] = useState<boolean>(
+    () =>
+      typeof document === "undefined" || document.visibilityState === "visible",
+  );
 
   useEffect(() => {
     const handleResize = (): void => setIsMobile(window.innerWidth < 768);
+    const handleVisibilityChange = (): void => {
+      setIsDocumentVisible(document.visibilityState === "visible");
+    };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center cursor-grab active:cursor-grabbing">
+    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center cursor-grab active:cursor-grabbing">
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1.5 : 2]}
+        dpr={[1, isMobile ? 1.25 : 1.5]}
+        performance={{ min: 0.5 }}
+        frameloop={isDocumentVisible ? "always" : "never"}
         gl={{ alpha: transparent }}
         onCreated={({ gl }: { gl: THREE.WebGLRenderer }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
@@ -157,6 +172,10 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
     } else {
       document.body.style.cssText = "cursor: auto";
     }
+
+    return () => {
+      document.body.style.cssText = "cursor: auto";
+    };
   }, [hovered, dragged]);
 
   useFrame((state: any, delta: number) => {

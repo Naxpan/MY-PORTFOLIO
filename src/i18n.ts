@@ -9,11 +9,18 @@ i18n
   .use(LanguageDetector) // tự detect ngôn ngữ
   .use(initReactI18next)
   .init({
+    detection: {
+      order: ["localStorage", "navigator"],
+      caches: ["localStorage"],
+    },
     resources: {
       en: { translation: en },
       vi: { translation: vi },
     },
+    load: "languageOnly",
+    supportedLngs: ["vi", "en"],
     fallbackLng: "vi",
+    initImmediate: false,
     interpolation: {
       escapeValue: false,
     },

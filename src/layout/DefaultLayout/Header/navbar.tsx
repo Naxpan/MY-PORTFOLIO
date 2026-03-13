@@ -119,7 +119,7 @@ const PillNav: React.FC<PillNavProps> = ({
     const onResize = () => layout();
     window.addEventListener("resize", onResize);
 
-    if (document.fonts) {
+    if ("fonts" in document && document.fonts) {
       document.fonts.ready.then(layout).catch(() => {});
     }
 
@@ -151,7 +151,16 @@ const PillNav: React.FC<PillNavProps> = ({
       }
     }
 
-    return () => window.removeEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      tlRefs.current.forEach((tl) => tl?.kill());
+      activeTweenRefs.current.forEach((tw) => tw?.kill());
+      logoTweenRef.current?.kill();
+
+      tlRefs.current = [];
+      activeTweenRefs.current = [];
+      logoTweenRef.current = null;
+    };
   }, [items, ease, initialLoadAnimation]);
 
   const handleEnter = (i: number) => {

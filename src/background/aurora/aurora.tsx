@@ -133,7 +133,7 @@ export default function Aurora(props: AuroraProps) {
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
-      antialias: true,
+      antialias: false,
     });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
@@ -142,17 +142,39 @@ export default function Aurora(props: AuroraProps) {
     gl.canvas.style.backgroundColor = "transparent";
 
     let program: Program | undefined;
+    let disposed = false;
+    let isDocumentVisible = document.visibilityState === "visible";
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    let prefersReducedMotion = reducedMotionQuery.matches;
+    let lastColorStopsKey = "";
+
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+    gl.canvas.style.width = "100%";
+    gl.canvas.style.height = "100%";
 
     function resize() {
       if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
+      const width = Math.max(1, Math.floor(ctn.offsetWidth * pixelRatio));
+      const height = Math.max(1, Math.floor(ctn.offsetHeight * pixelRatio));
       renderer.setSize(width, height);
       if (program) {
         program.uniforms.uResolution.value = [width, height];
       }
     }
-    window.addEventListener("resize", resize);
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(ctn);
+
+    const handleVisibilityChange = () => {
+      isDocumentVisible = document.visibilityState === "visible";
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    const handleReducedMotion = (event: MediaQueryListEvent) => {
+      prefersReducedMotion = event.matches;
+    };
+    reducedMotionQuery.addEventListener("change", handleReducedMotion);
 
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
@@ -181,17 +203,26 @@ export default function Aurora(props: AuroraProps) {
 
     let animateId = 0;
     const update = (t: number) => {
+      if (disposed) return;
       animateId = requestAnimationFrame(update);
+      if (!isDocumentVisible) return;
+
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
+      const effectiveSpeed = prefersReducedMotion ? 0 : speed;
+
       if (program) {
-        program.uniforms.uTime.value = time * speed * 0.1;
+        program.uniforms.uTime.value = time * effectiveSpeed * 0.1;
         program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
         program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
         const stops = propsRef.current.colorStops ?? colorStops;
-        program.uniforms.uColorStops.value = stops.map((hex: string) => {
-          const c = new Color(hex);
-          return [c.r, c.g, c.b];
-        });
+        const stopsKey = stops.join("|");
+        if (stopsKey !== lastColorStopsKey) {
+          program.uniforms.uColorStops.value = stops.map((hex: string) => {
+            const c = new Color(hex);
+            return [c.r, c.g, c.b];
+          });
+          lastColorStopsKey = stopsKey;
+        }
         renderer.render({ scene: mesh });
       }
     };
@@ -200,14 +231,17 @@ export default function Aurora(props: AuroraProps) {
     resize();
 
     return () => {
+      disposed = true;
       cancelAnimationFrame(animateId);
-      window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      reducedMotionQuery.removeEventListener("change", handleReducedMotion);
       if (ctn && gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [amplitude]);
+  }, []);
 
   return <div ref={ctnDom} className="w-full h-full" />;
 }

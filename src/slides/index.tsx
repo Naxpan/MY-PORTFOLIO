@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Home from "../slides/Home";
 import About from "../slides/About";
 import Project from "../slides/Project";
@@ -7,13 +7,35 @@ import Contact from "./Contact";
 
 const MainPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const showScrollTopRef = useRef(showScrollTop);
 
   useEffect(() => {
+    showScrollTopRef.current = showScrollTop;
+  }, [showScrollTop]);
+
+  useEffect(() => {
+    let frameId = 0;
+
     const onScroll = () => {
-      setShowScrollTop(window.scrollY > 200);
+      if (frameId) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0;
+        const next = window.scrollY > 200;
+        if (showScrollTopRef.current !== next) {
+          showScrollTopRef.current = next;
+          setShowScrollTop(next);
+        }
+      });
     };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    onScroll();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   const handleScrollToHome = () => {
@@ -63,7 +85,7 @@ const MainPage = () => {
       {showScrollTop && (
         <button
           onClick={handleScrollToHome}
-          className="fixed bottom-8 right-8 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-5"
+          className="fixed bottom-8 right-8 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300"
           aria-label="Scroll to top"
         >
           <svg
