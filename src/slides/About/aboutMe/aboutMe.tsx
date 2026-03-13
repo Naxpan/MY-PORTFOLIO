@@ -1,12 +1,10 @@
-import { lazy, Suspense } from "react";
 import StarBorder from "../../../component/buttons/StarBorder/starBorder";
 import ShinyText from "../../../component/texts/shiny/shinyText";
 import BlurText from "../../../component/texts/Blur/blurText";
+import Lanyard from "../../../component/lanyard/lanyard";
 import CountUp from "../../../component/count/countup";
 import Magnet from "../../../component/buttons/Magnet/magnet";
 import { useTranslation } from "react-i18next";
-
-const Lanyard = lazy(() => import("../../../component/lanyard/lanyard"));
 
 const handleAnimationComplete = () => {
   console.log("Animation completed!");
@@ -30,9 +28,7 @@ const AboutMe = () => {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Lanyard */}
           <div className="flex-1 flex items-start lg:items-center justify-center lg:justify-start h-[320px] lg:h-[100px] -mt-28 lg:mt-[100px]">
-            <Suspense fallback={<div className="w-full h-full" />}>
-              <Lanyard cameraDistance={10} position={[0, 9, 30]} />
-            </Suspense>
+            <Lanyard cameraDistance={10} position={[0, 9, 30]} />
           </div>
           {/* Info */}
           <div
