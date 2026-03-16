@@ -79,36 +79,40 @@ const AboutMe = () => {
                 onAnimationComplete={handleAnimationComplete}
                 className="text-base sm:text-xl mt-2 sm:mt-4 mb-4 sm:mb-8 font-light text-base-gray-300"
               />
-              <div className="w-full grid grid-cols-2 sm:grid-cols-4 border-t border-b border-gray-700 py-10 gap-y-8">
-                <div className="flex flex-col items-center">
-                  <div className="flex text-2xl font-bold text-blue-400">
-                    <CountUp from={0} to={5} duration={5} />+
+              <div className="w-full border-t border-b border-gray-700 py-10">
+                <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-y-8 gap-x-6">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="flex text-2xl font-bold text-blue-400">
+                      <CountUp from={0} to={5} duration={5} />+
+                    </div>
+                    <span className="text-base text-gray-300 mt-2">
+                      {t("y")}
+                    </span>
                   </div>
-                  <span className="text-base text-gray-300 mt-2">{t("y")}</span>
-                </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="flex text-2xl font-bold text-blue-400">
-                    <CountUp from={0} to={6} duration={5} />+
+                  <div className="flex flex-col items-center">
+                    <div className="flex text-2xl font-bold text-blue-400">
+                      <CountUp from={0} to={6} duration={5} />+
+                    </div>
+                    <span className="text-base text-gray-300 mt-2">
+                      {t("project")}
+                    </span>
                   </div>
-                  <span className="text-base text-gray-300 mt-2">
-                    {t("project")}
-                  </span>
-                </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="flex text-2xl font-bold text-blue-400">
-                    <CountUp from={0} to={14} duration={1} />+
+                  <div className="flex flex-col items-center">
+                    <div className="flex text-2xl font-bold text-blue-400">
+                      <CountUp from={0} to={14} duration={1} />+
+                    </div>
+                    <span className="text-base text-gray-300 mt-2">
+                      {t("tool")}
+                    </span>
                   </div>
-                  <span className="text-base text-gray-300 mt-2">
-                    {t("tool")}
-                  </span>
-                </div>
-                <div className="flex flex-col items-center">
+                  {/* <div className="flex flex-col items-center">
                   <div className="flex text-2xl font-bold text-blue-400">
                     <CountUp from={0} to={2.87} duration={1} />+
                   </div>
                   <span className="text-base text-gray-300 mt-2">GPA</span>
+                </div> */}
                 </div>
               </div>
               <div className="w-full flex justify-center lg:justify-start my-4 sm:my-6">
