@@ -1,5 +1,4 @@
 import PillNav from "./navbar";
-import { Link } from "react-router-dom";
 import { MdLanguage } from "react-icons/md";
 import { useState, useEffect } from "react";
 import i18n from "i18next";
@@ -67,13 +66,18 @@ const Header = () => {
 
   return (
     <div className="flex justify-between items-center w-full h-full">
-      <Link
-        to="/"
+      <a
+        href="#home"
+        onClick={(e) => {
+          e.preventDefault();
+          handleNavClick("#home");
+          setActiveHref("#home");
+        }}
         className="text-lg font-semibold hidden md:block hover:underline underline-offset-4"
         style={{ color: "#fff", fontFamily: "'Poppins', sans-serif" }}
       >
         Mẫn's Portfolio
-      </Link>
+      </a>
       <div className="flex flex-row items-center gap-4">
         <PillNav
           items={navItems}
