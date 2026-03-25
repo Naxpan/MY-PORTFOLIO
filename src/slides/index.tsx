@@ -85,7 +85,7 @@ const MainPage = () => {
       {showScrollTop && (
         <button
           onClick={handleScrollToHome}
-          className="fixed bottom-8 right-8 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+          className="fixed bottom-10 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300"
           aria-label="Scroll to top"
         >
           <svg

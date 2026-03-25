@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AnimatedContent from "../../component/animationContent/animated";
 import { useTranslation } from "react-i18next";
+import Footer from "../../layout/DefaultLayout/Footer";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ const Contact = () => {
         items-center
         justify-center
         gap-6 md:gap-10 lg:gap-8
-        px-4 py-20
+        px-4
         w-full max-w-5xl mx-auto
         min-h-screen
       "
@@ -237,6 +238,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </AnimatedContent>
   );
 };
