@@ -44,7 +44,7 @@ const Footer = () => {
         {/* Ở giữa: Social Icons */}
         <div className="flex items-center gap-6">
           <a
-            href="https://facebook.com/..."
+            href="https://www.facebook.com/pham.man.1203"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -52,7 +52,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://instagram.com/..."
+            href="https://www.instagram.com/_man.pn/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -60,7 +60,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://tiktok.com/..."
+            href="https://www.tiktok.com/@pngocman_"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -68,7 +68,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://github.com/..."
+            href="https://github.com/Naxpan"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -77,7 +77,7 @@ const Footer = () => {
 
           {/* GitLab */}
           <a
-            href="https://gitlab.com/your-username"
+            href="https://gitlab.com/Naxpan"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -95,7 +95,7 @@ const Footer = () => {
 
           {/* Discord */}
           <a
-            href="https://discord.gg/your-invite"
+            href="https://discord.com/channels/@mevite"
             target="_blank"
             rel="noopener noreferrer"
           >
