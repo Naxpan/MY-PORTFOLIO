@@ -3,6 +3,9 @@ import {
   FaFacebook,
   FaInstagram,
   FaGithub,
+  FaWhatsapp,
+  FaGitlab,
+  FaDiscord,
   FaHome,
   FaUser,
   FaProjectDiagram,
@@ -47,6 +50,7 @@ const Footer = () => {
           >
             <FaFacebook className="w-6 h-6 text-white/70 hover:text-blue-500 transition-all" />
           </a>
+
           <a
             href="https://instagram.com/..."
             target="_blank"
@@ -54,6 +58,7 @@ const Footer = () => {
           >
             <FaInstagram className="w-6 h-6 text-white/70 hover:text-pink-500 transition-all" />
           </a>
+
           <a
             href="https://tiktok.com/..."
             target="_blank"
@@ -61,12 +66,40 @@ const Footer = () => {
           >
             <SiTiktok className="w-6 h-6 text-white/70 hover:text-gray-400 transition-all" />
           </a>
+
           <a
             href="https://github.com/..."
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub className="w-6 h-6 text-white/70 hover:text-purple-400 transition-all" />
+          </a>
+
+          {/* GitLab */}
+          <a
+            href="https://gitlab.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGitlab className="w-6 h-6 text-white/70 hover:text-orange-500 transition-all" />
+          </a>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/0969337729"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaWhatsapp className="w-6 h-6 text-white/70 hover:text-green-500 transition-all" />
+          </a>
+
+          {/* Discord */}
+          <a
+            href="https://discord.gg/your-invite"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaDiscord className="w-6 h-6 text-white/70 hover:text-indigo-400 transition-all" />
           </a>
         </div>
 
