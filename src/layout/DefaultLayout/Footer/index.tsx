@@ -48,7 +48,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaFacebook className="w-6 h-6 text-white/70 hover:text-blue-500 transition-all" />
+            <FaFacebook className="w-6 h-6 text-white/70 hover:text-blue-500 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           <a
@@ -56,7 +56,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaInstagram className="w-6 h-6 text-white/70 hover:text-pink-500 transition-all" />
+            <FaInstagram className="w-6 h-6 text-white/70 hover:text-pink-500 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           <a
@@ -64,7 +64,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiTiktok className="w-6 h-6 text-white/70 hover:text-gray-400 transition-all" />
+            <SiTiktok className="w-6 h-6 text-white/70 hover:text-gray-400 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           <a
@@ -72,7 +72,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub className="w-6 h-6 text-white/70 hover:text-purple-400 transition-all" />
+            <FaGithub className="w-6 h-6 text-white/70 hover:text-purple-400 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           {/* GitLab */}
@@ -81,7 +81,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGitlab className="w-6 h-6 text-white/70 hover:text-orange-500 transition-all" />
+            <FaGitlab className="w-6 h-6 text-white/70 hover:text-orange-500 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           {/* WhatsApp */}
@@ -90,7 +90,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaWhatsapp className="w-6 h-6 text-white/70 hover:text-green-500 transition-all" />
+            <FaWhatsapp className="w-6 h-6 text-white/70 hover:text-green-500 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
 
           {/* Discord */}
@@ -99,7 +99,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaDiscord className="w-6 h-6 text-white/70 hover:text-indigo-400 transition-all" />
+            <FaDiscord className="w-6 h-6 text-white/70 hover:text-indigo-400 transition-all duration-300 transform hover:-translate-y-1" />
           </a>
         </div>
 
