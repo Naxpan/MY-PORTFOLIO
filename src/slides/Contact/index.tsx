@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AnimatedContent from "../../component/animationContent/animated";
 import { useTranslation } from "react-i18next";
+import ShinyText from "../../component/texts/shiny/shinyText";
 import Footer from "../../layout/DefaultLayout/Footer";
 
 const Contact = () => {
@@ -128,9 +129,13 @@ const Contact = () => {
                 {/* Footer Text */}
                 <div className="mt-auto pt-6">
                   <div className="flex items-center gap-2 text-gray-600">
-                    <span className="text-xs uppercase tracking-wider">
-                      Designed by Man®
-                    </span>
+                    <ShinyText
+                      className="text-xs uppercase tracking-wider"
+                      text="Designed by Pham Ngoc Man"
+                      speed={1.8}
+                      delay={0.6}
+                      spread={145}
+                    />
                   </div>
                 </div>
               </div>
@@ -138,9 +143,13 @@ const Contact = () => {
               {/* Right Side - Form */}
               <div className="lg:col-span-3">
                 <div className="flex items-center gap-3 mb-8">
-                  <h2 className="text-white text-2xl font-bold tracking-tight uppercase">
-                    {t("info")}
-                  </h2>
+                  <ShinyText
+                    className="text-white text-2xl font-bold tracking-tight uppercase"
+                    text={t("info")}
+                    speed={1.8}
+                    delay={0.6}
+                    spread={145}
+                  />
                 </div>
 
                 <form className="flex flex-col gap-6" onSubmit={handleSendMail}>

@@ -12,6 +12,7 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
+import ShinyText from "../../../component/texts/shiny/shinyText";
 
 const navItems = [
   { id: "home", icon: <FaHome /> },
@@ -37,9 +38,13 @@ const Footer = () => {
     <footer className="hidden lg:block w-full bg-transparent pt-20 mt-20 mb-4 ">
       <div className="w-full px-6 md:px-12 flex flex-row justify-between items-center">
         {/* Bên trái: Logo */}
-        <div className="text-xl font-bold tracking-wider text-white">
-          Portfolio
-        </div>
+        <ShinyText
+          className="font-extrabold text-xl mt-2"
+          text="PORTFOLIO"
+          speed={1.8}
+          delay={0.6}
+          spread={145}
+        />
 
         {/* Ở giữa: Social Icons */}
         <div className="flex items-center gap-6">
