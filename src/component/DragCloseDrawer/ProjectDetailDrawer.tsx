@@ -2,6 +2,8 @@
 import { useTranslation } from "react-i18next";
 import { DragCloseDrawer } from "../DragCloseDrawer/DragCloseDrawer";
 import CardSwap, { Card } from "../CardSwap/CardSwap";
+import { LuGithub } from "react-icons/lu";
+import Magnet from "../buttons/Magnet/magnet";
 
 interface Tech {
   name: string;
@@ -14,6 +16,7 @@ interface Project {
   image: Array<{ pic1: string; pic2: string; pic3: string }>;
   content: { vi: string; en: string };
   tech: Tech[];
+  github?: string;
 }
 
 interface ProjectDetailDrawerProps {
@@ -30,6 +33,7 @@ const ProjectDetailDrawer = ({
   lang,
 }: ProjectDetailDrawerProps) => {
   const { t } = useTranslation();
+  const projectGithubUrl = project?.github ?? "https://github.com/Naxpan";
 
   return (
     <DragCloseDrawer open={open} setOpen={setOpen}>
@@ -45,20 +49,42 @@ const ProjectDetailDrawer = ({
             <span className="text-white text-base font-normal">
               {t("tech")}
             </span>
-            <div className="grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4 mt-6 mb-60 z-10">
-              {project.tech.map((tech: Tech) => (
-                <div key={tech.name} className="flex flex-col items-center">
-                  <img
-                    src={tech.logo}
-                    alt={tech.name}
-                    className="w-16 h-16 object-contain mb-2"
-                    loading="lazy"
-                  />
-                  <span className="text-base text-white font-base">
-                    {tech.name}
-                  </span>
-                </div>
-              ))}
+            <div className="mt-6 mb-60 z-10">
+              <div className="grid grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+                {project.tech.map((tech: Tech) => (
+                  <div key={tech.name} className="flex flex-col items-center">
+                    <img
+                      src={tech.logo}
+                      alt={tech.name}
+                      className="w-16 h-16 object-contain mb-2"
+                      loading="lazy"
+                    />
+                    <span className="text-base text-white font-base">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 mb-3 h-px w-24" />
+
+              <Magnet padding={5}>
+                <a
+                  href={projectGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View on GitHub"
+                  className="group relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-white/10"
+                >
+                  {/* Icon */}
+                  <LuGithub className="h-4 w-4 transition-transform duration-300 group-hover:scale-125" />
+
+                  {/* Text */}
+                  <span className="tracking-wide">{t("seeongithub")}</span>
+
+                  {/* Glow effect */}
+                  <span className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-white/5 blur-md" />
+                </a>
+              </Magnet>
             </div>
           </div>
           <div className="flex-1"></div>

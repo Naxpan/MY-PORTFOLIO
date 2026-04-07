@@ -18,6 +18,7 @@ interface Project {
   image: Array<{ pic1: string; pic2: string; pic3: string }>;
   content: { vi: string; en: string };
   tech: Tech[];
+  github?: string;
 }
 
 const Project = () => {
@@ -60,6 +61,7 @@ const Project = () => {
                   project.description[lang as keyof typeof project.description]
                 }
                 image={project.image[0].pic1}
+                githubUrl={project.github}
                 onShowDetail={() => handleShowDetail(project)}
               />
             </AnimatedContent>

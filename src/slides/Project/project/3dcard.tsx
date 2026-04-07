@@ -4,11 +4,13 @@ import {
   CardItem,
 } from "../../../component/3Dcard/3Dcard";
 import { useTranslation } from "react-i18next";
+import { FaGithub } from "react-icons/fa";
 
 interface ThreeDCardDemoProps {
   title: string;
   description: string;
   image: string;
+  githubUrl?: string;
   onShowDetail?: () => void;
 }
 
@@ -16,11 +18,13 @@ export function ThreeDCardDemo({
   title,
   description,
   image,
+  githubUrl,
   onShowDetail,
 }: ThreeDCardDemoProps) {
   const { i18n } = useTranslation();
   const lang = i18n.language;
   const { t } = useTranslation();
+  const projectGithubUrl = githubUrl ?? "https://github.com/Naxpan";
 
   return (
     <CardContainer className="inter-var">
@@ -61,6 +65,19 @@ export function ThreeDCardDemo({
             className="px-2 py-1 rounded-xl text-xs font-normal dark:text-white"
           >
             {t("more")}
+          </CardItem>
+          <CardItem
+            title={t("seeongithub")}
+            as="a"
+            href={projectGithubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            translateZ={20}
+            translateX={40}
+            className="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+          >
+            <FaGithub className="w-6 h-6" />
           </CardItem>
         </div>
       </CardBody>

@@ -16,10 +16,10 @@ interface Project {
   image: Array<{ pic1: string; pic2: string; pic3: string }>;
   content: { vi: string; en: string };
   tech: Tech[];
+  github?: string;
 }
 
 export function HeroParallaxDemo() {
-  const { t } = useTranslation();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -35,6 +35,7 @@ export function HeroParallaxDemo() {
     title: project.title[lang as keyof typeof project.title],
     description: project.description[lang as keyof typeof project.description],
     thumbnail: project.image[0].pic1,
+    github: project.github,
     link: "#",
     fullData: project,
   }));
