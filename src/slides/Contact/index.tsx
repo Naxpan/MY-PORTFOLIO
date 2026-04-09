@@ -172,12 +172,19 @@ const Contact = () => {
                         </svg>
                       </div>
                       <input
+                        id="contact-name"
                         type="text"
-                        placeholder={t("name")}
+                        placeholder=" "
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-12 pr-4 py-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white placeholder-gray-600 transition-all duration-300"
+                        className="peer w-full pl-12 pr-4 pt-6 pb-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white transition-all duration-300"
                       />
+                      <label
+                        htmlFor="contact-name"
+                        className="pointer-events-none absolute left-12 text-sm text-gray-500 transition-all duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-blue-400 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-0 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-blue-400"
+                      >
+                        {t("name")}
+                      </label>
                     </div>
                   </div>
 
@@ -200,24 +207,40 @@ const Contact = () => {
                         </svg>
                       </div>
                       <input
+                        id="contact-email"
                         type="email"
-                        placeholder={t("mail")}
+                        placeholder=" "
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full pl-12 pr-4 py-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white placeholder-gray-600 transition-all duration-300"
+                        className="peer w-full pl-12 pr-4 pt-6 pb-2 my-2 bg-transparent border-b border-gray-800 outline-none focus:outline-none focus:ring-0 focus:border-blue-500 text-white transition-all duration-300"
                       />
+                      <label
+                        htmlFor="contact-email"
+                        className="pointer-events-none absolute left-12 text-sm text-gray-500 transition-all duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-blue-400 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-0 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-blue-400"
+                      >
+                        {t("mail")}
+                      </label>
                     </div>
                   </div>
 
                   {/* Message Textarea */}
                   <div>
-                    <textarea
-                      rows={6}
-                      placeholder={t("mess")}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-900/50 border border-gray-800 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition resize-none"
-                    ></textarea>
+                    <div className="relative">
+                      <textarea
+                        id="contact-message"
+                        rows={6}
+                        placeholder=" "
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        className="peer w-full px-4 pt-7 pb-4 bg-gray-900/50 border border-gray-800 rounded-lg text-white focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition resize-none"
+                      ></textarea>
+                      <label
+                        htmlFor="contact-message"
+                        className="pointer-events-none absolute left-4 z-10 text-sm leading-none text-gray-500 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:px-0 peer-placeholder-shown:bg-transparent peer-placeholder-shown:backdrop-blur-0 peer-placeholder-shown:[text-shadow:none] peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:px-2 peer-focus:rounded-sm peer-focus:bg-gray-950/35 peer-focus:backdrop-blur-[1px] peer-focus:[text-shadow:0_0_8px_rgb(2_6_23)] peer-focus:text-xs peer-focus:text-blue-400 peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:-translate-y-1/2 peer-[&:not(:placeholder-shown)]:px-2 peer-[&:not(:placeholder-shown)]:rounded-sm peer-[&:not(:placeholder-shown)]:bg-gray-950/35 peer-[&:not(:placeholder-shown)]:backdrop-blur-[1px] peer-[&:not(:placeholder-shown)]:[text-shadow:0_0_8px_rgb(2_6_23)] peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-blue-400"
+                      >
+                        {t("mess")}
+                      </label>
+                    </div>
                   </div>
 
                   {/* Submit Button */}
